@@ -1,0 +1,4 @@
+<p>assignement2 works!</p>
+<input type="text" [(ngModel)]="username">
+<p>{{username}}</p>
+<button [disabled]="isUsernameEmpty()"  class="btn btn-danger" (click)="onUsernameSelect($event)">Select</button>

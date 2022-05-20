@@ -1,0 +1,11 @@
+<button (click)="toggleDisplayPassword()">Display Details</button>
+<p *ngIf="displayPassword">Secret Password = Tuna</p>
+<div [ngStyle]="{ border: 'solid 1px black', margin: '20px' }">
+  <p
+    *ngFor="let log of buttonClickedLog; let i = index"
+    [ngStyle]="{ backgroundColor: i>=4?'blue':'transparent' }"
+    [ngClass]="{'white-text': i>=4}"
+  >
+    {{ log }}
+  </p>
+</div>
