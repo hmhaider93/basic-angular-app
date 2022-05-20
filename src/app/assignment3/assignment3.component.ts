@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-assignment3',
   templateUrl: './assignment3.component.html',
   styleUrls: ['./assignment3.component.css']
 })
+
+
 export class Assignment3Component implements OnInit {
+
+
+  @ViewChild('myDiv') myDiv:ElementRef;
+  divContentLength = 0;
+  activateBorder = false;
 
    getTime() {
     const today = new Date();
@@ -21,7 +28,7 @@ export class Assignment3Component implements OnInit {
   }
 
 
-
+  contentDiv ='';
   buttonClickedLog = []
 
   displayPassword = false;
@@ -31,11 +38,18 @@ export class Assignment3Component implements OnInit {
     this.buttonClickedLog.unshift("Button is Clicked at " +time);
     if(this.displayPassword === false) this.displayPassword = true
     else this.displayPassword = false
+    this.activateBorder = true;
   }
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
+    console.log(this.myDiv.nativeElement.innerHTML.length);
+    this.divContentLength = this.myDiv.nativeElement.innerHTML.length
+    console.log(this.divContentLength);
   }
 
 }
